@@ -16,7 +16,6 @@ import android.support.v4.app.ActivityOptionsCompat
 import android.content.Intent
 
 
-
 class StoriesListActivity : AppCompatActivity(), StoriesListPresenter.StoriesListView {
 
     private lateinit var component: StoriesListComponent
