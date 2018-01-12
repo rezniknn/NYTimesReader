@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">NYTimesReader</string>
+    <string name="base_url">https://api.nytimes.com/svc/</string>
+    <string name="api_key">4d6852e303374dfbbfa2a2df31ba52d0</string>
+</resources>
