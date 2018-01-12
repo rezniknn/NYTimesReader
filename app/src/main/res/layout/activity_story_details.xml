@@ -1,9 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:paddingEnd="16dp"
+    android:paddingStart="16dp"
+    android:paddingTop="16dp"
     tools:context="com.alexeyreznik.nytimesreader.presentation.views.StoryDetailsActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="@dimen/story_details_image_height"
+            android:layout_height="@dimen/story_details_image_height"
+            android:contentDescription="@string/thumbnail"
+            android:src="@drawable/image_placeholder"
+            android:transitionName="thumbnail" />
+
+        <TextView
+            android:id="@+id/story_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignBottom="@id/image"
+            android:layout_alignTop="@id/image"
+            android:layout_marginStart="16dp"
+            android:layout_toEndOf="@id/image"
+            android:ellipsize="end"
+            android:maxLines="6"
+            android:textStyle="bold"
+            tools:text="California, Walmart, Eric Greitens: Your Thursday Evening Briefing" />
+
+        <TextView
+            android:id="@+id/abstrct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/image"
+            android:layout_marginTop="16dp"
+            tools:text="Here\u2019s what you need to know at the end of the day." />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/abstrct"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorPrimaryDark" />
+
+        <TextView
+            android:id="@+id/byline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/divider"
+            android:layout_toStartOf="@id/age"
+            android:ellipsize="end"
+            android:lines="1"
+            android:textSize="12sp"
+            tools:text="By KAREN ZRAICK and DAVID SCULL" />
+
+        <TextView
+            android:id="@+id/age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/divider"
+            android:ellipsize="end"
+            android:lines="1"
+            android:textSize="12sp"
+            tools:text="2 hours ago" />
+
+        <TextView
+            android:id="@+id/link"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/byline"
+            android:layout_marginTop="16dp"
+            android:autoLink="web"
+            android:textColorLink="@color/colorPrimaryDark"
+            android:textSize="12sp"
+            tools:text="https:\/\/www.nytimes.com\/2018\/01\/11\/briefing\/california-walmart-eric-greitens.html" />
+
+    </RelativeLayout>
+</ScrollView>

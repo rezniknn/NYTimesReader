@@ -5,6 +5,8 @@ import android.content.Context
 import com.alexeyreznik.nytimesreader.R
 import com.alexeyreznik.nytimesreader.data.repositories.StoriesRepository
 import com.alexeyreznik.nytimesreader.data.rest.NYTimesService
+import com.squareup.moshi.KotlinJsonAdapterFactory
+import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
 import okhttp3.Interceptor
@@ -44,11 +46,14 @@ class ApplicationModule(private val application: Application) {
     @Provides
     @Singleton
     fun provideService(context: Context, okHttpClient: OkHttpClient): NYTimesService {
+        val moshi = Moshi.Builder()
+                .add(KotlinJsonAdapterFactory())
+                .build()
         val retrofit = Retrofit.Builder()
                 .baseUrl(context.getString(R.string.base_url))
                 .client(okHttpClient)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(MoshiConverterFactory.create())
+                .addConverterFactory(MoshiConverterFactory.create(moshi))
                 .build()
 
         return retrofit.create(NYTimesService::class.java)

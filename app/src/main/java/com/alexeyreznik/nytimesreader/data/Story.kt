@@ -10,22 +10,22 @@ import kotlinx.android.parcel.Parcelize
  */
 @SuppressLint("ParcelCreator")
 @Parcelize
-data class Story(@Json(name = "section") private val section: String,
-                 @Json(name = "subsection") private val subsection: String,
-                 @Json(name = "title") private val title: String,
-                 @Json(name = "abstract") private val abstract: String,
-                 @Json(name = "url") private val url: String,
-                 @Json(name = "byline") private val byline: String,
-                 @Json(name = "item_type") private val itemType: String,
-                 @Json(name = "published_date") private val publishedDate: String,
-                 @Json(name = "multimedia") private val multimedia: List<Multimedia>) : Parcelable {
+data class Story(@Json(name = "section") val section: String,
+                 @Json(name = "subsection") val subsection: String,
+                 @Json(name = "title") val title: String,
+                 @Json(name = "abstract") val abstract: String,
+                 @Json(name = "url") val url: String,
+                 @Json(name = "byline") val byline: String,
+                 @Json(name = "item_type") val itemType: String,
+                 @Json(name = "published_date") val publishedDate: String,
+                 @Json(name = "multimedia") val multimedia: List<Multimedia>) : Parcelable {
     @Parcelize
-    data class Multimedia(@Json(name = "url") private val url: String,
-                          @Json(name = "format") private val format: String,
-                          @Json(name = "type") private val type: String,
-                          @Json(name = "subtype") private val subtype: String,
-                          @Json(name = "caption") private val caption: String,
-                          @Json(name = "copyright") private val copyright: String,
-                          @Json(name = "height") private val height: Int,
-                          @Json(name = "width") private val width: Int) : Parcelable
+    data class Multimedia(@Json(name = "url") val url: String,
+                          @Json(name = "format") val format: String,
+                          @Json(name = "type") val type: String,
+                          @Json(name = "subtype") val subtype: String,
+                          @Json(name = "caption") val caption: String,
+                          @Json(name = "copyright") val copyright: String,
+                          @Json(name = "height") val height: Int,
+                          @Json(name = "width") val width: Int) : Parcelable
 }
