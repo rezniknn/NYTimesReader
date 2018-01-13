@@ -1,6 +1,8 @@
 package com.alexeyreznik.nytimesreader.presentation.views
 
+import android.content.Intent
 import android.os.Bundle
+import android.support.v4.app.ActivityOptionsCompat
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
@@ -12,8 +14,6 @@ import com.alexeyreznik.nytimesreader.di.components.StoriesListComponent
 import com.alexeyreznik.nytimesreader.di.modules.StoriesListModule
 import com.alexeyreznik.nytimesreader.presentation.presenters.StoriesListPresenter
 import kotlinx.android.synthetic.main.activity_stories_list.*
-import android.support.v4.app.ActivityOptionsCompat
-import android.content.Intent
 
 
 class StoriesListActivity : AppCompatActivity(), StoriesListPresenter.StoriesListView {
@@ -32,6 +32,7 @@ class StoriesListActivity : AppCompatActivity(), StoriesListPresenter.StoriesLis
         presenter.attachView(this)
 
         initRecyclerView()
+        initSectionsView()
         presenter.getStoriesList()
     }
 
@@ -52,6 +53,7 @@ class StoriesListActivity : AppCompatActivity(), StoriesListPresenter.StoriesLis
         adapter.stories.clear()
         adapter.stories.addAll(stories)
         adapter.notifyDataSetChanged()
+        recycler_view.smoothScrollToPosition(0)
     }
 
     override fun navigateToStoryDetails(story: Story, sharedView: View) {
@@ -63,9 +65,13 @@ class StoriesListActivity : AppCompatActivity(), StoriesListPresenter.StoriesLis
 
     private fun initRecyclerView() {
         adapter = StoriesListAdapter()
-        presenter.registerOnClickSubject(adapter.onClickSubject)
+        presenter.registerStoryOnClickSubject(adapter.onClickSubject)
         recycler_view.adapter = adapter
         recycler_view.layoutManager = LinearLayoutManager(this)
         srl.setOnRefreshListener { presenter.getStoriesList() }
+    }
+
+    private fun initSectionsView() {
+        presenter.registerSectionOnClickSubject(section.onClickSubject)
     }
 }

@@ -3,4 +3,7 @@
     <dimen name="story_card_height">120dp</dimen>
     <dimen name="story_card_image_height">80dp</dimen>
     <dimen name="story_details_image_height">120dp</dimen>
+    <dimen name="section_button_height">32dp</dimen>
+    <dimen name="section_button_margin">8dp</dimen>
+    <dimen name="section_button_padding">4dp</dimen>
 </resources>

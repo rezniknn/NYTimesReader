@@ -10,15 +10,16 @@ import kotlinx.android.parcel.Parcelize
  */
 @SuppressLint("ParcelCreator")
 @Parcelize
-data class Story(@Json(name = "section") val section: String,
+data class Story(@Json(name = "url") val url: String,
+                 @Json(name = "section") val section: String,
                  @Json(name = "subsection") val subsection: String,
                  @Json(name = "title") val title: String,
                  @Json(name = "abstract") val abstract: String,
-                 @Json(name = "url") val url: String,
                  @Json(name = "byline") val byline: String,
                  @Json(name = "item_type") val itemType: String,
                  @Json(name = "published_date") val publishedDate: String,
                  @Json(name = "multimedia") val multimedia: List<Multimedia>) : Parcelable {
+
     @Parcelize
     data class Multimedia(@Json(name = "url") val url: String,
                           @Json(name = "format") val format: String,

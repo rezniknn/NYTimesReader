@@ -38,7 +38,7 @@ class StoriesListAdapter : RecyclerView.Adapter<StoriesListAdapter.ViewHolder>()
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
         val itemView = LayoutInflater.from(parent?.context)
-                .inflate(R.layout.story_card_layout, parent, false)
+                .inflate(R.layout.story_card, parent, false)
         return ViewHolder(itemView)
     }
 

@@ -17,6 +17,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
+
 /**
  * Created by alexeyreznik on 12/01/2018.
  */

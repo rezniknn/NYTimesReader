@@ -11,4 +11,8 @@ data class StoriesListResponse(@Json(name = "status") val status: String,
                                @Json(name = "section") val section: String,
                                @Json(name = "last_updated") val lastUpdated: String,
                                @Json(name = "num_results") val numResults: Int,
-                               @Json(name = "results") val results: List<Story>)
+                               @Json(name = "results") val results: List<Story>) {
+    companion object {
+        val STATUS_OK = "OK"
+    }
+}

@@ -1,6 +1,8 @@
 package com.alexeyreznik.nytimesreader.presentation.presenters
 
+import android.content.Context
 import android.view.View
+import com.alexeyreznik.nytimesreader.R
 import com.alexeyreznik.nytimesreader.data.Story
 import com.alexeyreznik.nytimesreader.domain.GetStoriesListUseCase
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -10,9 +12,13 @@ import io.reactivex.subjects.PublishSubject
 /**
  * Created by alexeyreznik on 12/01/2018.
  */
-class StoriesListPresenter(private val getStoriesListUseCase: GetStoriesListUseCase) : BasePresenter<StoriesListPresenter.StoriesListView>() {
+class StoriesListPresenter(private val context: Context, private val getStoriesListUseCase: GetStoriesListUseCase) : BasePresenter<StoriesListPresenter.StoriesListView>() {
 
     var section: String = "home"
+        set(value) {
+            field = value
+            getStoriesList()
+        }
 
     fun getStoriesList() {
         view?.showProgress(true)
@@ -23,16 +29,22 @@ class StoriesListPresenter(private val getStoriesListUseCase: GetStoriesListUseC
                         .subscribe({ stories ->
                             view?.showProgress(false)
                             view?.showStoriesList(stories)
-                        }, { error ->
+                        }, {
                             view?.showProgress(false)
-                            view?.showError(error.localizedMessage)
+                            view?.showError(context.getString(R.string.error_failed_to_get_stories))
                         })
         )
     }
 
-    fun registerOnClickSubject(onClickSubject: PublishSubject<Pair<Story, View>>) {
+    fun registerStoryOnClickSubject(onClickSubject: PublishSubject<Pair<Story, View>>) {
         disposable.add(
                 onClickSubject.subscribe { pair -> view?.navigateToStoryDetails(pair.first, pair.second) }
+        )
+    }
+
+    fun registerSectionOnClickSubject(onClickSubject: PublishSubject<String>) {
+        disposable.add(
+                onClickSubject.subscribe { section -> this.section = section }
         )
     }
 

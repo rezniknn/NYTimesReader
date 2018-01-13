@@ -1,5 +1,6 @@
 package com.alexeyreznik.nytimesreader.di.modules
 
+import android.content.Context
 import com.alexeyreznik.nytimesreader.data.repositories.StoriesRepository
 import com.alexeyreznik.nytimesreader.domain.GetStoriesListUseCase
 import com.alexeyreznik.nytimesreader.presentation.presenters.StoriesListPresenter
@@ -18,6 +19,6 @@ class StoriesListModule {
             = GetStoriesListUseCase(storiesRepository)
 
     @Provides
-    fun providePresenter(getStoriesListUseCase: GetStoriesListUseCase): StoriesListPresenter
-            = StoriesListPresenter(getStoriesListUseCase)
+    fun providePresenter(context: Context, getStoriesListUseCase: GetStoriesListUseCase): StoriesListPresenter
+            = StoriesListPresenter(context, getStoriesListUseCase)
 }
