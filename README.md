@@ -11,3 +11,6 @@ Key features:
 - Glide
 - Master-Detail Flow
 - Shared Element Transition
+
+Screenshots:
+![Alt text](./screenshot.png)
