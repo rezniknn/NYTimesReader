@@ -11,6 +11,7 @@ Key features:
 - Glide
 - Master-Detail Flow
 - Shared Element Transition
+- Unit Tests (JUnit, Mockito)
 
 Screenshots:
 
