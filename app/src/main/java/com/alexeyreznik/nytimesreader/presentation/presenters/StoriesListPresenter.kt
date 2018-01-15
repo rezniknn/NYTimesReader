@@ -1,8 +1,7 @@
 package com.alexeyreznik.nytimesreader.presentation.presenters
 
-import android.content.Context
 import android.view.View
-import com.alexeyreznik.nytimesreader.R
+import com.alexeyreznik.nytimesreader.data.Sections
 import com.alexeyreznik.nytimesreader.data.Story
 import com.alexeyreznik.nytimesreader.domain.GetStoriesListUseCase
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -12,9 +11,9 @@ import io.reactivex.subjects.PublishSubject
 /**
  * Created by alexeyreznik on 12/01/2018.
  */
-class StoriesListPresenter(private val context: Context, private val getStoriesListUseCase: GetStoriesListUseCase) : BasePresenter<StoriesListPresenter.StoriesListView>() {
+class StoriesListPresenter(private val getStoriesListUseCase: GetStoriesListUseCase) : BasePresenter<StoriesListPresenter.StoriesListView>() {
 
-    var section: String = "home"
+    var section: String = Sections.HOME.title
         set(value) {
             field = value
             getStoriesList()
@@ -31,12 +30,12 @@ class StoriesListPresenter(private val context: Context, private val getStoriesL
                             view?.showStoriesList(stories)
                         }, {
                             view?.showProgress(false)
-                            view?.showError(context.getString(R.string.error_failed_to_get_stories))
+                            view?.showError()
                         })
         )
     }
 
-    fun registerStoryOnClickSubject(onClickSubject: PublishSubject<Pair<Story, View>>) {
+    fun registerStoryOnClickSubject(onClickSubject: PublishSubject<Pair<Story, View?>>) {
         disposable.add(
                 onClickSubject.subscribe { pair -> view?.navigateToStoryDetails(pair.first, pair.second) }
         )
@@ -50,8 +49,8 @@ class StoriesListPresenter(private val context: Context, private val getStoriesL
 
     interface StoriesListView {
         fun showProgress(progress: Boolean)
-        fun showError(error: String)
+        fun showError()
         fun showStoriesList(stories: List<Story>)
-        fun navigateToStoryDetails(story: Story, sharedView: View)
+        fun navigateToStoryDetails(story: Story, sharedView: View?)
     }
 }

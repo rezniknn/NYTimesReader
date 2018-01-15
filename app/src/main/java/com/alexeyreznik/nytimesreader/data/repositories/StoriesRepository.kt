@@ -1,8 +1,8 @@
 package com.alexeyreznik.nytimesreader.data.repositories
 
 import com.alexeyreznik.nytimesreader.data.Story
-import com.alexeyreznik.nytimesreader.data.rest.NYTimesService
-import com.alexeyreznik.nytimesreader.data.rest.StoriesListResponse
+import com.alexeyreznik.nytimesreader.data.network.NYTimesService
+import com.alexeyreznik.nytimesreader.data.network.StoriesListResponse
 import io.reactivex.Single
 
 /**
@@ -15,7 +15,7 @@ class StoriesRepository(private val service: NYTimesService) {
                     .map { response ->
                         when (response.status) {
                             StoriesListResponse.STATUS_OK -> return@map response.results
-                            else -> throw Exception()
+                            else -> throw Exception(String.format("Error. Status: %s", response.status))
                         }
                     }
 }

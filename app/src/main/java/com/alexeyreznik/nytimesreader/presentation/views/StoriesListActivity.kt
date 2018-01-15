@@ -45,8 +45,8 @@ class StoriesListActivity : AppCompatActivity(), StoriesListPresenter.StoriesLis
         srl.isRefreshing = progress
     }
 
-    override fun showError(error: String) {
-        Toast.makeText(this, error, Toast.LENGTH_LONG).show()
+    override fun showError() {
+        Toast.makeText(this, getString(R.string.error_failed_to_get_stories), Toast.LENGTH_LONG).show()
     }
 
     override fun showStoriesList(stories: List<Story>) {
@@ -56,11 +56,13 @@ class StoriesListActivity : AppCompatActivity(), StoriesListPresenter.StoriesLis
         recycler_view.smoothScrollToPosition(0)
     }
 
-    override fun navigateToStoryDetails(story: Story, sharedView: View) {
+    override fun navigateToStoryDetails(story: Story, sharedView: View?) {
         val intent = Intent(this, StoryDetailsActivity::class.java)
         intent.putExtra(StoryDetailsActivity.ARG_STORY, story)
-        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, sharedView as View, "thumbnail")
-        startActivity(intent, options.toBundle())
+        sharedView?.let {
+            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, sharedView as View, "thumbnail")
+            startActivity(intent, options.toBundle())
+        } ?: startActivity(intent)
     }
 
     private fun initRecyclerView() {

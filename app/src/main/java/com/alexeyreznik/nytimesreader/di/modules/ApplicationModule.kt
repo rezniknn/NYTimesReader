@@ -4,7 +4,7 @@ import android.app.Application
 import android.content.Context
 import com.alexeyreznik.nytimesreader.R
 import com.alexeyreznik.nytimesreader.data.repositories.StoriesRepository
-import com.alexeyreznik.nytimesreader.data.rest.NYTimesService
+import com.alexeyreznik.nytimesreader.data.network.NYTimesService
 import com.squareup.moshi.KotlinJsonAdapterFactory
 import com.squareup.moshi.Moshi
 import dagger.Module

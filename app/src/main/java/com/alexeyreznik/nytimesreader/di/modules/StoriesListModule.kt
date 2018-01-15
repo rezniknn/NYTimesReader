@@ -19,6 +19,6 @@ class StoriesListModule {
             = GetStoriesListUseCase(storiesRepository)
 
     @Provides
-    fun providePresenter(context: Context, getStoriesListUseCase: GetStoriesListUseCase): StoriesListPresenter
-            = StoriesListPresenter(context, getStoriesListUseCase)
+    fun providePresenter(getStoriesListUseCase: GetStoriesListUseCase): StoriesListPresenter
+            = StoriesListPresenter(getStoriesListUseCase)
 }

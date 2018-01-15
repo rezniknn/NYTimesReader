@@ -20,7 +20,7 @@ import io.reactivex.subjects.PublishSubject
 class StoriesListAdapter : RecyclerView.Adapter<StoriesListAdapter.ViewHolder>() {
 
     var stories: MutableList<Story> = mutableListOf()
-    val onClickSubject: PublishSubject<Pair<Story, View>> = PublishSubject.create()
+    val onClickSubject: PublishSubject<Pair<Story, View?>> = PublishSubject.create()
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val story = stories[position]
