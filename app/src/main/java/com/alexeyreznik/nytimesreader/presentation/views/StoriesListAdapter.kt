@@ -10,9 +10,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.alexeyreznik.nytimesreader.R
 import com.alexeyreznik.nytimesreader.data.Story
+import com.alexeyreznik.nytimesreader.utils.ResourcesWrapper
 import com.alexeyreznik.nytimesreader.utils.calculateStoryAge
 import com.bumptech.glide.Glide
 import io.reactivex.subjects.PublishSubject
+import java.util.*
 
 /**
  * Created by alexeyreznik on 12/01/2018.
@@ -26,7 +28,7 @@ class StoriesListAdapter : RecyclerView.Adapter<StoriesListAdapter.ViewHolder>()
         val story = stories[position]
         holder.title.text = story.title
         holder.byline.text = story.byline
-        holder.age.text = calculateStoryAge(holder.itemView.context, story.publishedDate)
+        holder.age.text = calculateStoryAge(ResourcesWrapper(holder.itemView.context), story.publishedDate, Date())
         if (story.multimedia.size > 1) {
             Glide.with(holder.itemView.context).load(story.multimedia[1].url).into(holder.image)
         } else {
@@ -42,8 +44,7 @@ class StoriesListAdapter : RecyclerView.Adapter<StoriesListAdapter.ViewHolder>()
         return ViewHolder(itemView)
     }
 
-    override fun getItemCount(): Int
-            = stories.size
+    override fun getItemCount(): Int = stories.size
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var card: CardView = itemView.findViewById(R.id.card)

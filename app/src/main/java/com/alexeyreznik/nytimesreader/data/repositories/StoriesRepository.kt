@@ -8,9 +8,9 @@ import io.reactivex.Single
 /**
  * Created by alexeyreznik on 12/01/2018.
  */
-class StoriesRepository(private val service: NYTimesService) {
+open class StoriesRepository(private val service: NYTimesService) {
 
-    fun getStories(section: String): Single<List<Story>> =
+    open fun getStories(section: String): Single<List<Story>> =
             service.getStories(section)
                     .map { response ->
                         when (response.status) {

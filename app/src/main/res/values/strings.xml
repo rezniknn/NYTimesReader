@@ -3,8 +3,6 @@
     <string name="base_url">https://api.nytimes.com/svc/</string>
     <string name="api_key">4d6852e303374dfbbfa2a2df31ba52d0</string>
     <string name="thumbnail">thumbnail</string>
-    <string name="minutes_ago">minutes ago</string>
-    <string name="hours_ago">hours ago</string>
     <string name="top_stories">Top Stories</string>
     <string name="story_details">Story Details</string>
     <string name="error_failed_to_get_stories">Failed to get stories</string>

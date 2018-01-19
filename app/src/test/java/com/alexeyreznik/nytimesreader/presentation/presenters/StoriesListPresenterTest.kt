@@ -91,7 +91,7 @@ class StoriesListPresenterTest {
         verify(view).showProgress(true)
         verify(view).showProgress(false)
         verify(view).showError()
-        verify(view, never()).showStoriesList(com.alexeyreznik.nytimesreader.utils.any())
+        verify(view, never()).showStoriesList(com.alexeyreznik.nytimesreader.any())
     }
 
 

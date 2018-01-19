@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="minutes_ago">
+        <item quantity="one">minute ago</item>
+        <item quantity="other">minutes ago</item>
+    </plurals>
+    <plurals name="hours_ago">
+        <item quantity="one">hour ago</item>
+        <item quantity="other">hours ago</item>
+    </plurals>
+</resources>

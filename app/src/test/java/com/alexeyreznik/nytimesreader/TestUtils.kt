@@ -1,4 +1,4 @@
-package com.alexeyreznik.nytimesreader.utils
+package com.alexeyreznik.nytimesreader
 
 import org.mockito.Mockito
 
