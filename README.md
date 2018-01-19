@@ -12,6 +12,7 @@ Key features:
 - Master-Detail Flow
 - Shared Element Transition
 - Unit Tests (JUnit, Mockito)
+- UI Tests (Espresso)
 
 Screenshots:
 
