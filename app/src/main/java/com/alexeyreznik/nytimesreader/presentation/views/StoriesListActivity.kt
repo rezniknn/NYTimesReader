@@ -60,7 +60,7 @@ class StoriesListActivity : AppCompatActivity(), StoriesListPresenter.StoriesLis
         val intent = Intent(this, StoryDetailsActivity::class.java)
         intent.putExtra(StoryDetailsActivity.ARG_STORY, story)
         sharedView?.let {
-            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, sharedView as View, "thumbnail")
+            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, sharedView, "thumbnail")
             startActivity(intent, options.toBundle())
         } ?: startActivity(intent)
     }

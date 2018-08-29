@@ -38,8 +38,8 @@ class StoriesListAdapter : RecyclerView.Adapter<StoriesListAdapter.ViewHolder>()
         holder.card.setOnClickListener { onClickSubject.onNext(Pair(story, holder.image)) }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
-        val itemView = LayoutInflater.from(parent?.context)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val itemView = LayoutInflater.from(parent.context)
                 .inflate(R.layout.story_card, parent, false)
         return ViewHolder(itemView)
     }

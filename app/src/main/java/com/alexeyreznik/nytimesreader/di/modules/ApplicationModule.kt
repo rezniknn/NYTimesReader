@@ -5,8 +5,8 @@ import android.content.Context
 import com.alexeyreznik.nytimesreader.R
 import com.alexeyreznik.nytimesreader.data.repositories.StoriesRepository
 import com.alexeyreznik.nytimesreader.data.network.NYTimesService
-import com.squareup.moshi.KotlinJsonAdapterFactory
 import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import okhttp3.Interceptor
